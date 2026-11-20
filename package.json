@@ -1,0 +1,46 @@
+{
+  "name": "laser-science-virtual-lab",
+  "version": "2.0.0",
+  "description": "Laser Science & Technology Virtual Interactive Laboratory – University of Technology, Iraq",
+  "author": "Youness Latef",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win"
+  },
+  "build": {
+    "appId": "iq.edu.uotechnology.laserlab",
+    "productName": "Laser Science & Technology Lab",
+    "copyright": "Copyright © 2026 Youness Latef – University of Technology, Iraq",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "electron-main.js",
+      "css/**/*",
+      "js/**/*",
+      "assets/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/images.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Laser Science Lab"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^25.1.8"
+  }
+}

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>علوم وتكنولوجيا الليزر | المختبر الافتراضي التفاعلي – الجامعة التكنولوجية</title>
+  <link rel="icon" type="image/png" href="assets/images.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       WELCOME / SPLASH SCREEN (Department & Goals)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="welcome-overlay" id="welcome-overlay">
+    <div class="welcome-card">
+      <div class="welcome-top">
+        <div class="welcome-crest"><img src="assets/images.png" alt="Logo" class="logo-img"></div>
+        <div>
+          <div class="welcome-univ-ar">الجامعة التكنولوجية – العراق | كلية العلوم التطبيقية</div>
+          <div class="welcome-dept-ar">قسم علوم وتكنولوجيا الليزر</div>
+          <div class="welcome-univ-en">University of Technology – Iraq | Dept. of Laser Science &amp; Technology</div>
+        </div>
+      </div>
+
+      <div class="welcome-hero">
+        <h1>المختبر الافتراضي التفاعلي لعلوم وتكنولوجيا الليزر</h1>
+        <p>Virtual Interactive Optical &amp; Laser Laboratory</p>
+      </div>
+
+      <div class="welcome-section-h">نبذة عن القسم</div>
+      <p class="welcome-p">
+        يُعد قسم علوم وتكنولوجيا الليزر في كلية العلوم التطبيقية بالجامعة التكنولوجية من الأقسام العلمية الرائدة في العراق والمنطقة،
+        حيث يُعنى بإعداد كوادر علمية وبحثية متخصصة في فيزياء الليزر، البصريات الهندسية والموجية، الألياف الضوئية، الفوتونيات،
+        والتطبيقات الطبية والصناعية واللاخطية لأشعة الليزر لطلبة البكالوريوس والدراسات العليا.
+      </p>
+
+      <div class="welcome-section-h">أهداف القسم والمختبر الافتراضي</div>
+      <div class="welcome-goals">
+        <div class="goal-item"><span class="goal-num">01</span><span>تنفيذ 100 تجربة بصرية وليزرية جاهزة بمحاكاة فيزيائية دقيقة وفورية.</span></div>
+        <div class="goal-item"><span class="goal-num">02</span><span>استيعاب قوانين الانعكاس والانكسار والتداخل والحيود والاستقطاب عملياً.</span></div>
+        <div class="goal-item"><span class="goal-num">03</span><span>محاكاة الرنانات الليزرية والألياف الضوئية المرنة بظاهرة الانعكاس الكلي.</span></div>
+        <div class="goal-item"><span class="goal-num">04</span><span>بيئة حرة تفاعلية ثنائية وثلاثية الأبعاد (2D / 3D) لتصميم التجارب الخاصة.</span></div>
+      </div>
+
+      <div class="welcome-actions">
+        <button class="w-btn w-btn-primary" id="welcome-btn-library">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <div>
+            <span class="w-btn-main">مكتبة التجارب الجاهزة</span>
+            <span class="w-btn-sub">اختر من 100 تجربة علمية مُعدّة بالكامل</span>
+          </div>
+        </button>
+        <button class="w-btn w-btn-secondary" id="welcome-btn-free">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+          <div>
+            <span class="w-btn-main">تجربة حرة</span>
+            <span class="w-btn-sub">ابْنِ تجربتك البصرية بنفسك على الطاولة</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="welcome-foot">
+        <a href="https://about-me-bd7dd.web.app/" target="_blank" rel="noopener noreferrer" class="dev-link">DEVELOPED BY <strong>YOUNESS LATEF</strong></a>
+        <span>UOT LASER LAB v2.0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN APPLICATION SHELL
+  ══════════════════════════════════════════════════════════ -->
+  <div class="app-shell" id="app">
+
+    <!-- HEADER BAR -->
+    <header class="app-header">
+      <div class="header-brand" id="btn-open-welcome" title="عن القسم والمختبر">
+        <div class="brand-crest"><img src="assets/images.png" alt="Logo" class="logo-img"></div>
+        <div class="brand-text">
+          <div class="brand-title" data-i18n="platformTitle">علوم وتكنولوجيا الليزر</div>
+          <div class="brand-sub" data-i18n="platformSubtitle">المختبر الافتراضي التفاعلي – الجامعة التكنولوجية</div>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <button class="btn-primary" id="btn-experiments">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span data-i18n="btnExperiments">التجارب المخبرية (100)</span>
+        </button>
+
+        <button class="btn-secondary" id="btn-free-lab">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          <span data-i18n="btnFreeLab">تجربة حرة</span>
+        </button>
+
+        <div class="mode-toggle">
+          <button class="btn-mode active" id="btn-mode-2d">2D</button>
+          <button class="btn-mode" id="btn-mode-3d">3D</button>
+        </div>
+
+        <div class="quick-nav">
+          <button class="icon-btn" id="btn-head-prev" title="السابقة">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <select id="quick-select" class="quick-select"></select>
+          <button class="icon-btn" id="btn-head-next" title="التالية">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="header-tools">
+        <button class="icon-btn hide-sm" id="btn-undo" title="Undo (Ctrl+Z)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14L4 9l5-5"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>
+        </button>
+        <button class="icon-btn hide-sm" id="btn-redo" title="Redo (Ctrl+Y)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-fit" title="توسيط العرض">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        </button>
+        <div class="tool-sep hide-sm"></div>
+        <button class="icon-btn hide-sm" id="btn-clear" title="مسح الطاولة">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+        </button>
+        <button class="icon-btn hide-sm" id="btn-save" title="حفظ JSON">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+        </button>
+        <button class="icon-btn hide-sm" id="btn-load" title="فتح JSON">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <input type="file" id="file-input" accept=".json" style="display:none">
+        <button class="icon-btn hide-sm" id="btn-export-png" title="تصدير صورة PNG">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </button>
+        <div class="tool-sep"></div>
+        <button class="icon-btn" id="btn-theme" title="الوضع الليلي / النهاري">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="icon-btn hide-sm" id="btn-fullscreen" title="ملء الشاشة">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        </button>
+        <button class="icon-btn lang-btn" id="btn-lang">EN</button>
+      </div>
+    </header>
+
+    <!-- WORKSPACE BODY -->
+    <div class="workspace-body">
+
+      <!-- LEFT SIDEBAR: OPTICAL COMPONENTS -->
+      <aside class="sidebar sidebar-left drawer-closed" id="sidebar-left">
+        <div class="sidebar-top">
+          <span data-i18n="toolDrawerTitle">العناصر البصرية</span>
+          <button class="icon-btn" id="btn-close-left" title="إغلاق">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="sidebar-scroll">
+
+          <!-- 1. Sources -->
+          <div class="acc-group open">
+            <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+              <span class="acc-head-left"><span class="acc-dot" style="background:#ef4444"></span><span data-i18n="catSources">مصادر الليزر والضوء</span></span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="acc-body">
+              <div class="comp-card" draggable="true" data-type="laser" data-subtype="red" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="2" y="6" width="14" height="8" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1"/><line x1="16" y1="10" x2="27" y2="10" stroke="#ef4444" stroke-width="2.2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolLaserRed">ليزر أحمر 650 nm</div><div class="comp-desc" data-i18n="toolLaserRedDesc">حزمة مترابطة أحادية اللون</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="laser" data-subtype="green" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="2" y="6" width="14" height="8" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1"/><line x1="16" y1="10" x2="27" y2="10" stroke="#22c55e" stroke-width="2.2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolLaserGreen">ليزر أخضر 532 nm</div><div class="comp-desc" data-i18n="toolLaserGreenDesc">Nd:YAG مضاعف التردد</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="laser" data-subtype="violet" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="2" y="6" width="14" height="8" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1"/><line x1="16" y1="10" x2="27" y2="10" stroke="#a855f7" stroke-width="2.2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolLaserViolet">ليزر بنفسجي 405 nm</div><div class="comp-desc" data-i18n="toolLaserVioletDesc">ديود ليزري قصير الموجة</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="white_light" data-subtype="white_light" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="2" y="6" width="12" height="8" rx="2" fill="#334155" stroke="#cbd5e1" stroke-width="1"/><line x1="14" y1="8" x2="27" y2="6" stroke="#ef4444" stroke-width="1.2"/><line x1="14" y1="10" x2="27" y2="10" stroke="#22c55e" stroke-width="1.2"/><line x1="14" y1="12" x2="27" y2="14" stroke="#3b82f6" stroke-width="1.2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolWhiteLight">مصدر ضوء أبيض</div><div class="comp-desc" data-i18n="toolWhiteLightDesc">طيف مرئي 400–700 nm</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Mirrors -->
+          <div class="acc-group">
+            <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+              <span class="acc-head-left"><span class="acc-dot" style="background:#e2e8f0"></span><span data-i18n="catMirrors">المرايا ومجزئات الحزمة</span></span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="acc-body">
+              <div class="comp-card" draggable="true" data-type="mirror" data-subtype="plane" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><line x1="5" y1="14" x2="23" y2="6" stroke="#e2e8f0" stroke-width="2.5"/><line x1="6" y1="16" x2="24" y2="8" stroke="#64748b" stroke-width="1.5"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolPlaneMirror">مرآة مستوية</div><div class="comp-desc" data-i18n="toolPlaneMirrorDesc">انعكاس منتظم عالي الكفاءة</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="mirror" data-subtype="concave" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><path d="M18 3 Q11 10 18 17" fill="none" stroke="#e2e8f0" stroke-width="2.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolConcaveMirror">مرآة مقعرة</div><div class="comp-desc" data-i18n="toolConcaveMirrorDesc">مرآة لامة للأشعة</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="mirror" data-subtype="convex" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><path d="M11 3 Q18 10 11 17" fill="none" stroke="#e2e8f0" stroke-width="2.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolConvexMirror">مرآة محدبة</div><div class="comp-desc" data-i18n="toolConvexMirrorDesc">مرآة مفرقة للأشعة</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="mirror" data-subtype="partial" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><line x1="6" y1="15" x2="22" y2="5" stroke="#38bdf8" stroke-width="2.2" stroke-dasharray="3 2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolBeamSplitter">مجزئ حزمة 50/50</div><div class="comp-desc" data-i18n="toolBeamSplitterDesc">انعكاس ونفاذ متزامن</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Lenses -->
+          <div class="acc-group">
+            <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+              <span class="acc-head-left"><span class="acc-dot" style="background:#38bdf8"></span><span data-i18n="catLenses">العدسات البصرية</span></span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="acc-body">
+              <div class="comp-card" draggable="true" data-type="lens" data-subtype="convex" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><path d="M14 2 Q21 10 14 18 Q7 10 14 2 Z" fill="rgba(56,189,248,0.28)" stroke="#7dd3fc" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolConvexLens">عدسة محدبة الوجهين</div><div class="comp-desc" data-i18n="toolConvexLensDesc">عدسة لامة (f &gt; 0)</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="lens" data-subtype="concave" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><path d="M9 2 L19 2 Q15 10 19 18 L9 18 Q13 10 9 2 Z" fill="rgba(56,189,248,0.28)" stroke="#7dd3fc" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolConcaveLens">عدسة مقعرة الوجهين</div><div class="comp-desc" data-i18n="toolConcaveLensDesc">عدسة مفرقة (f &lt; 0)</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="lens" data-subtype="plano-convex" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><path d="M12 2 Q20 10 12 18 Z" fill="rgba(56,189,248,0.28)" stroke="#7dd3fc" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolPlanoConvex">عدسة مستوية محدبة</div><div class="comp-desc" data-i18n="toolPlanoConvexDesc">تقليل الزيغ الكروي</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="lens" data-subtype="plano-concave" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><path d="M10 2 L18 2 Q13 10 18 18 L10 18 Z" fill="rgba(56,189,248,0.28)" stroke="#7dd3fc" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolPlanoConcave">عدسة مستوية مقعرة</div><div class="comp-desc" data-i18n="toolPlanoConcaveDesc">توسيع الحزمة الليزرية</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Prisms -->
+          <div class="acc-group">
+            <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+              <span class="acc-head-left"><span class="acc-dot" style="background:#7dd3fc"></span><span data-i18n="catPrisms">المناشير والكتل</span></span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="acc-body">
+              <div class="comp-card" draggable="true" data-type="prism" data-subtype="triangular" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><polygon points="14,3 24,17 4,17" fill="rgba(125,211,252,0.25)" stroke="#7dd3fc" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolTriangularPrism">منشور ثلاثي</div><div class="comp-desc" data-i18n="toolTriangularPrismDesc">تشتت طيفي (معادلة كوشي)</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="prism" data-subtype="rectangular" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="5" y="4" width="18" height="12" fill="rgba(125,211,252,0.25)" stroke="#7dd3fc" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolRectangularPrism">كتلة زجاجية مستطيلة</div><div class="comp-desc" data-i18n="toolRectangularPrismDesc">إزاحة جانبية وانكسار مزدوج</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="prism" data-subtype="pentagonal" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><polygon points="14,2 23,8 19,18 9,18 5,8" fill="rgba(125,211,252,0.25)" stroke="#7dd3fc" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolPentagonalPrism">منشور خماسي</div><div class="comp-desc" data-i18n="toolPentagonalPrismDesc">حرف ثابت بزاوية 90°</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Media & Flexible Fiber Optic -->
+          <div class="acc-group open">
+            <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+              <span class="acc-head-left"><span class="acc-dot" style="background:#f59e0b"></span><span data-i18n="catMedia">الأوساط والألياف الضوئية</span></span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="acc-body">
+              <div class="comp-card" draggable="true" data-type="fiber" data-subtype="fiber" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><path d="M3 13 C10 2, 18 18, 25 7" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/><path d="M3 13 C10 2, 18 18, 25 7" fill="none" stroke="#38bdf8" stroke-width="1.6" stroke-dasharray="2 2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolFiber">كيبل ضوئي مرن</div><div class="comp-desc" data-i18n="toolFiberDesc">قابل للانحناء مع انعكاس كلي TIR</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="medium" data-subtype="glass" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="4" y="4" width="20" height="12" rx="2" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolRefractiveMedium">وسط كاسر</div><div class="comp-desc" data-i18n="toolRefractiveMediumDesc">معامل انكسار متغير n</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="medium" data-subtype="absorbing" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="4" y="4" width="20" height="12" rx="2" fill="rgba(100,116,139,0.45)" stroke="#94a3b8" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolAbsorbingMedium">وسط ممتص</div><div class="comp-desc" data-i18n="toolAbsorbingMediumDesc">توهين بير–لامبرت</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="gain_medium" data-subtype="ruby" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="3" y="5" width="22" height="10" rx="2" fill="rgba(244,63,94,0.4)" stroke="#fb7185" stroke-width="1.4"/><path d="M8 5l4 10M14 5l4 10M20 5l3 7" stroke="rgba(255,255,255,0.5)" stroke-width="1"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolGainRuby">وسط فعال: الياقوت (Ruby)</div><div class="comp-desc" data-i18n="toolGainRubyDesc">Cr³⁺:Al₂O₃ — 694.3 nm</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="gain_medium" data-subtype="nd_yag" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="3" y="5" width="22" height="10" rx="2" fill="rgba(167,139,250,0.4)" stroke="#a78bfa" stroke-width="1.4"/><path d="M8 5l4 10M14 5l4 10M20 5l3 7" stroke="rgba(255,255,255,0.5)" stroke-width="1"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolGainNdYag">وسط فعال: Nd:YAG</div><div class="comp-desc" data-i18n="toolGainNdYagDesc">نيوديميوم ياك — 1064 / 532 nm</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="gain_medium" data-subtype="er_yag" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="3" y="5" width="22" height="10" rx="2" fill="rgba(251,146,60,0.4)" stroke="#fb923c" stroke-width="1.4"/><path d="M8 5l4 10M14 5l4 10M20 5l3 7" stroke="rgba(255,255,255,0.5)" stroke-width="1"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolGainErYag">وسط فعال: Er:YAG</div><div class="comp-desc" data-i18n="toolGainErYagDesc">إربيوم ياك — 2940 nm</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="gain_medium" data-subtype="he_ne" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="3" y="5" width="22" height="10" rx="2" fill="rgba(239,68,68,0.35)" stroke="#f87171" stroke-width="1.4"/><path d="M8 5l4 10M14 5l4 10M20 5l3 7" stroke="rgba(255,255,255,0.5)" stroke-width="1"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolGainHeNe">وسط فعال: هيليوم–نيون</div><div class="comp-desc" data-i18n="toolGainHeNeDesc">أنبوبة غاز He-Ne — 632.8 nm</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Diffraction & Slits -->
+          <div class="acc-group">
+            <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+              <span class="acc-head-left"><span class="acc-dot" style="background:#a855f7"></span><span data-i18n="catDiffraction">الحيود والشقوق</span></span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="acc-body">
+              <div class="comp-card" draggable="true" data-type="grating" data-subtype="grating" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><line x1="14" y1="2" x2="14" y2="18" stroke="#a855f7" stroke-width="2.2" stroke-dasharray="2 2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolGrating">محزوز حيود</div><div class="comp-desc" data-i18n="toolGratingDesc">رتب حيود متعددة الطيف</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="single_slit" data-subtype="single_slit" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><line x1="14" y1="2" x2="14" y2="7" stroke="#94a3b8" stroke-width="2.5"/><line x1="14" y1="13" x2="14" y2="18" stroke="#94a3b8" stroke-width="2.5"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolSingleSlit">شق مفرد</div><div class="comp-desc" data-i18n="toolSingleSlitDesc">حيود فرانهوفر</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="double_slit" data-subtype="double_slit" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><line x1="14" y1="1" x2="14" y2="5" stroke="#94a3b8" stroke-width="2.5"/><line x1="14" y1="8" x2="14" y2="12" stroke="#94a3b8" stroke-width="2.5"/><line x1="14" y1="15" x2="14" y2="19" stroke="#94a3b8" stroke-width="2.5"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolDoubleSlit">شق مزدوج (يونغ)</div><div class="comp-desc" data-i18n="toolDoubleSlitDesc">تداخل الأهداب المضيئة</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="aperture" data-subtype="aperture" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><circle cx="14" cy="10" r="6" fill="none" stroke="#94a3b8" stroke-width="2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolAperture">فتحة دائرية</div><div class="comp-desc" data-i18n="toolApertureDesc">تحديد قطر الحزمة وقرص آيري</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Measurement Tools -->
+          <div class="acc-group">
+            <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+              <span class="acc-head-left"><span class="acc-dot" style="background:#22c55e"></span><span data-i18n="catTools">أدوات القياس والكشف</span></span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="acc-body">
+              <div class="comp-card" draggable="true" data-type="detector" data-subtype="detector" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="10" y="3" width="8" height="14" rx="2" fill="#0f172a" stroke="#22c55e" stroke-width="1.6"/><line x1="10" y1="5" x2="10" y2="15" stroke="#22c55e" stroke-width="2.2"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolDetector">كاشف ضوئي</div><div class="comp-desc" data-i18n="toolDetectorDesc">مقياس قدرة ليزرية (mW)</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="screen" data-subtype="screen" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="12" y="2" width="5" height="16" rx="1" fill="#1e293b" stroke="#94a3b8" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolScreen">شاشة رصد</div><div class="comp-desc" data-i18n="toolScreenDesc">عرض البقع وأنماط التداخل</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="ruler" data-subtype="ruler" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><rect x="2" y="6" width="24" height="8" rx="1" fill="#1e293b" stroke="#f08833" stroke-width="1.2"/><path d="M6 6v4M11 6v3M16 6v4M21 6v3" stroke="#cbd5e1" stroke-width="1"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolRuler">مسطرة بصرية</div><div class="comp-desc" data-i18n="toolRulerDesc">قياس المسافات بدقة (mm)</div></div>
+              </div>
+              <div class="comp-card" draggable="true" data-type="protractor" data-subtype="protractor" ondragstart="labDragStart(event)" onclick="labClickAdd(this)">
+                <div class="comp-svg"><svg viewBox="0 0 28 20"><path d="M4 16 A10 10 0 0 1 24 16 Z" fill="rgba(56,189,248,0.12)" stroke="#f08833" stroke-width="1.4"/></svg></div>
+                <div class="comp-meta"><div class="comp-name" data-i18n="toolProtractor">منقلة دائرية</div><div class="comp-desc" data-i18n="toolProtractorDesc">قياس الزوايا (0° – 180°)</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- CENTER CANVAS WORKSPACE -->
+      <main class="canvas-stage" id="canvas-wrapper">
+
+        <div class="drop-hint" id="drop-hint" data-i18n="dropHint">اسحب عنصراً بصرياً إلى الطاولة أو اضغط عليه لإضافته</div>
+
+        <!-- FLOATING SCIENTIFIC LAW BOX -->
+        <div class="law-box hidden" id="law-box">
+          <div class="law-head">
+            <div class="law-meta">
+              <span class="law-num" id="law-num">EXP-001</span>
+              <span class="law-cat" id="law-cat">بصريات أساسية</span>
+            </div>
+            <div class="law-controls">
+              <button class="icon-btn" id="btn-law-fit" title="توسيط العرض" style="width:24px;height:24px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/></svg>
+              </button>
+              <button class="icon-btn" id="btn-law-toggle" title="طي / فتح" style="width:24px;height:24px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="law-title" id="law-title">قانون الانعكاس الضوئي</div>
+          <div class="law-body">
+            <div class="law-eq-card">
+              <div class="law-eq-label" id="law-eq-label">Law of Reflection</div>
+              <div class="law-eq-formula" id="law-eq-formula">θ<sub>r</sub> = θ<sub>i</sub></div>
+              <div class="law-eq-desc" id="law-eq-desc"></div>
+            </div>
+            <div class="law-obj" id="law-obj"></div>
+            <div class="law-nav">
+              <button class="law-nav-btn" id="btn-prev-exp" data-i18n="lawPrev">السابقة</button>
+              <span class="law-counter" id="law-counter">1 / 100</span>
+              <button class="law-nav-btn" id="btn-next-exp" data-i18n="lawNext">التالية</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2D HIGH-DPI CANVAS -->
+        <canvas id="lab-canvas"></canvas>
+
+        <!-- 3D WEBGL BENCH -->
+        <div id="lab-3d-container">
+          <div class="hud-3d">
+            <button class="btn-3d" id="btn-3d-persp">منظور 3D</button>
+            <button class="btn-3d" id="btn-3d-top">مسقط علوي</button>
+            <button class="btn-3d" id="btn-3d-reset">إعادة ضبط</button>
+          </div>
+        </div>
+
+        <!-- LIVE PHOTODETECTOR PILL -->
+        <div class="detector-pill" id="detector-pill">
+          <span class="detector-dot"></span>
+          <span class="detector-lbl" data-i18n="toolDetector">كاشف ضوئي</span>
+          <span class="detector-val" id="detector-val">0.00 mW</span>
+        </div>
+
+        <!-- MOBILE DRAWER BUTTONS -->
+        <div class="mobile-fab-bar">
+          <button class="mobile-fab" id="fab-left" data-i18n="toolDrawerTitle">العناصر البصرية</button>
+          <button class="mobile-fab" id="fab-right" data-i18n="tabProperties">الخصائص</button>
+        </div>
+
+      </main>
+
+      <!-- RIGHT SIDEBAR: INSPECTOR -->
+      <aside class="sidebar sidebar-right drawer-closed" id="sidebar-right">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="properties" data-i18n="tabProperties">الخصائص</button>
+          <button class="tab-btn" data-tab="theory" data-i18n="tabTheory">النظرية</button>
+          <button class="tab-btn" data-tab="quiz" data-i18n="tabQuiz">الاختبار</button>
+          <button class="tab-btn" data-tab="settings" data-i18n="tabSettings">الإعدادات</button>
+        </div>
+
+        <!-- PROPERTIES -->
+        <div class="tab-pane active" id="pane-properties">
+          <div class="empty-state" id="no-selection-msg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg>
+            <div data-i18n="noSelectionMsg">اضغط على أي عنصر في الطاولة البصرية لتعديل خصائصه بدقة</div>
+          </div>
+          <div id="prop-editor" style="display:none">
+            <div class="prop-header" id="prop-title"></div>
+            <div id="prop-fields"></div>
+            <div class="prop-actions">
+              <button class="btn-dup" id="btn-duplicate" data-i18n="btnDuplicate">نسخ العنصر</button>
+              <button class="btn-del" id="btn-delete" data-i18n="btnDelete">حذف العنصر</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- THEORY -->
+        <div class="tab-pane" id="pane-theory">
+          <div class="empty-state" id="theory-empty" data-i18n="theoryPlaceholder">اختر تجربة من المكتبة لعرض النظرية العلمية والمعادلات</div>
+          <div id="theory-body" style="display:none"></div>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="tab-pane" id="pane-quiz">
+          <div class="empty-state" id="quiz-empty" data-i18n="quizPlaceholder">اختر تجربة للبدء بالاختبار التفاعلي</div>
+          <div id="quiz-body" style="display:none"></div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="tab-pane" id="pane-settings">
+          <div class="set-group">
+            <div class="set-title" data-i18n="settingsCanvas">إعدادات الطاولة البصرية</div>
+            <label class="set-row"><span data-i18n="settingGrid">إظهار الشبكة المترية</span><input type="checkbox" id="set-grid" checked></label>
+            <label class="set-row"><span data-i18n="settingSnap">المحاذاة التلقائية للشبكة</span><input type="checkbox" id="set-snap"></label>
+            <div class="prop-row">
+              <label class="prop-label" data-i18n="settingGridSpacing">تباعد الشبكة</label>
+              <div class="prop-combo">
+                <input type="range" class="prop-range" id="set-grid-spacing" min="15" max="80" value="25">
+                <input type="number" class="prop-num" id="set-grid-spacing-num" min="15" max="80" value="25">
+                <span class="prop-unit">px</span>
+              </div>
+            </div>
+          </div>
+          <div class="set-group">
+            <div class="set-title" data-i18n="settingsRay">إعدادات محرك الأشعة</div>
+            <label class="set-row"><span data-i18n="settingFocalPoints">إظهار البؤر البصرية</span><input type="checkbox" id="set-focal" checked></label>
+            <label class="set-row"><span data-i18n="settingNormals">إظهار العوامد على السطوح</span><input type="checkbox" id="set-normals"></label>
+            <label class="set-row"><span data-i18n="settingAngles">إظهار زوايا السقوط والانعكاس</span><input type="checkbox" id="set-angles"></label>
+            <div class="prop-row">
+              <label class="prop-label" data-i18n="settingRayDensity">كثافة الأشعة</label>
+              <div class="prop-combo">
+                <input type="range" class="prop-range" id="set-ray-density" min="1" max="11" value="3">
+                <input type="number" class="prop-num" id="set-ray-density-num" min="1" max="11" value="3">
+                <span class="prop-unit"></span>
+              </div>
+            </div>
+            <div class="prop-row">
+              <label class="prop-label" data-i18n="settingMaxDepth">عمق الانعكاسات القصوى</label>
+              <div class="prop-combo">
+                <input type="range" class="prop-range" id="set-ray-depth" min="3" max="20" value="10">
+                <input type="number" class="prop-num" id="set-ray-depth-num" min="3" max="20" value="10">
+                <span class="prop-unit"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- STATUS BAR -->
+    <footer class="status-bar">
+      <div class="status-group">
+        <span class="status-mono status-hide-sm">X:<span id="st-x">0</span> Y:<span id="st-y">0</span></span>
+        <span class="status-sep status-hide-sm">|</span>
+        <span class="status-badge" id="st-exp-tag">FREE</span>
+        <span id="st-exp-name" data-i18n="statusFreeMode">تجربة حرة</span>
+        <span class="status-sep status-hide-sm">|</span>
+        <span class="status-hide-sm"><span id="st-comp-count">0</span> <span data-i18n="statusComponents">عنصر</span></span>
+        <span class="status-sep status-hide-sm">|</span>
+        <span class="status-hide-sm"><span id="st-ray-count">0</span> <span data-i18n="statusRays">شعاع</span></span>
+      </div>
+      <div class="status-group">
+        <a href="https://about-me-bd7dd.web.app/" target="_blank" rel="noopener noreferrer" class="status-dev dev-link">DEVELOPED BY YOUNESS LATEF</a>
+        <span class="status-sep status-hide-sm">|</span>
+        <span class="status-mono status-hide-sm" id="st-fps">60 FPS</span>
+        <span class="status-sep status-hide-sm">|</span>
+        <span class="status-hide-sm">الجامعة التكنولوجية – العراق</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       EXPERIMENTS LIBRARY MODAL (100 EXPERIMENTS)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="exp-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-title" data-i18n="modalExpTitle">مكتبة التجارب البصرية والليزرية (100 تجربة)</div>
+        <button class="icon-btn" id="modal-close" title="إغلاق">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-filters">
+        <input class="modal-search" id="modal-search" type="text" data-i18n-placeholder="searchPlaceholder" placeholder="ابحث باسم التجربة، الرقم، أو القانون...">
+        <select class="modal-cat" id="modal-cat-filter">
+          <option value="" data-i18n="catAll">جميع الفئات (001 – 100)</option>
+          <option value="fundamental" data-i18n="catFundamental">1. البصريات الأساسية (001–015)</option>
+          <option value="wave" data-i18n="catWave">2. البصريات الموجية والتداخل (016–030)</option>
+          <option value="polarization" data-i18n="catPolarization">3. الاستقطاب والكهرومغناطيسية (031–040)</option>
+          <option value="laser_physics" data-i18n="catLaserPhysics">4. فيزياء الليزر والرنانات (041–055)</option>
+          <option value="advanced_laser" data-i18n="catAdvancedLaser">5. تكنولوجيا الليزر المتقدمة (056–065)</option>
+          <option value="nonlinear" data-i18n="catNonlinear">6. البصريات اللاخطية (066–075)</option>
+          <option value="spectroscopy" data-i18n="catSpectroscopy">7. المطيافية والفوتونيات (076–085)</option>
+          <option value="materials" data-i18n="catMaterials">8. تفاعل الليزر والمادة (086–093)</option>
+          <option value="biomedical" data-i18n="catBiomedical">9. التطبيقات الطبية والحيوية (094–100)</option>
+        </select>
+      </div>
+      <div class="modal-grid" id="modal-grid"></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/libs/three.min.js"></script>
+  <script src="js/libs/OrbitControls.js"></script>
+  <script src="js/core/math.js"></script>
+  <script src="js/core/rayTracer.js"></script>
+  <script src="js/core/canvas2d.js"></script>
+  <script src="js/core/bench3d.js"></script>
+  <script src="js/data/experiments.js"></script>
+  <script src="js/ui/i18n.js"></script>
+  <script src="js/ui/app.js"></script>
+</body>
+</html>
